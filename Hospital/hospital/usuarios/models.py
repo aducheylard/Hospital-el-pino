@@ -10,6 +10,8 @@ class Perfil(models.Model):
 	usuario = models.OneToOneField(User,on_delete=models.CASCADE)
 	rol = models.CharField(null=False,max_length=20)
 	tel = models.CharField(null=False, max_length=20)
+	umovil = models.CharField(default="Homero", max_length=20)
+	cmovil = models.CharField(default="12345", max_length=20)
 
 	def __str__(self):
 		return str(self.usuario.username)
@@ -53,9 +55,9 @@ class Personal(models.Model):
 	especialidad=models.CharField(max_length=20)
 	file = models.FileField(upload_to='archivos/personal')
 
-
 	def __str__(self):
 		return str(self.id_perfil.usuario.username)
+
 
 
 

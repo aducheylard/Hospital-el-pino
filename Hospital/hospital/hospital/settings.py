@@ -25,7 +25,7 @@ SECRET_KEY = '0pgs^4n_q!#afnj$$v%ut5npv!%_o9_7v0&h+jkgg)y4&0g@dk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1']
+ALLOWED_HOSTS = ['localhost','127.0.0.1', '192.168.18.5', '25.8.28.210']
 
 
 # Application definition
@@ -49,6 +49,9 @@ INSTALLED_APPS = [
     'redireccion',
     'visita',
     'registrar',
+    'apis',
+    'rutas',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -87,8 +90,12 @@ WSGI_APPLICATION = 'hospital.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'Hospital-DB',
+        'USER': 'postgres',
+        'PASSWORD': '12344321',
+        'HOST': 'hospital-db.crxchedgxtom.us-east-2.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
 

@@ -16,6 +16,7 @@ from django.contrib.auth.models import Group
 from lista.views import usuarios_listen, usuarios_listu
 from django.contrib.auth.decorators import login_required
 from dashboard.views import home
+from django.contrib.auth.models import User
 
 
 def Usuarios_in_Grupos(usuario_id):
@@ -46,8 +47,11 @@ def Set_password(usuario_id):
 	clave.append(nombre[:3])
 	clave.append(apellido[:3])
 	clave.append(tel[:4])
+	perfil.cmovil = clave[0].lower()+clave[1].lower()+clave[2]
+	perfil.umovil = user.username
 	user.set_password(clave[0].lower()+clave[1].lower()+clave[2])
 	user.save()
+	perfil.save()
 
 @login_required
 def PerfilView(request, perfil):

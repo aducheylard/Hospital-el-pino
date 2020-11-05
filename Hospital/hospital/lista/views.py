@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, reverse, HttpResponse, HttpResponseRedirect, redirect
-from usuarios.models import Paciente , Personal, Tutor,Perfil
+from usuarios.models import Paciente , Personal, Tutor, Perfil
 from registrar.models import formulario
 from tutor.models import Consulta
 from visita.models import Visita
@@ -45,6 +45,16 @@ def usuarios_listen(request):
 		"perfil":perfil,
 	}
 	return render(request,"listen.html",context)
+
+@login_required
+def usuarios_lista(request):
+	current_user = request.user
+	perfil=Perfil.objects.all()
+	context = {
+		"object_list": perfil,
+		"actual":current_user	
+	}
+	return render(request,"listusers.html",context)
 
 @login_required
 def usuarios_listu(request):

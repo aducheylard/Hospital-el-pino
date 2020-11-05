@@ -1,0 +1,146 @@
+{%extends "base.html"%}
+
+{%  block content %}
+
+{% if sb and eb and lp %}
+<div class="jumbotron">
+    <h5 class="display-4">Ruta - Equipo San Bernardo</h5>
+    <p class="lead">Orden de visitas: {{sb.ruta}}</hr> Distancia estimada: {{sb.distancia}}KMS </p>
+    <hr class="my-4">
+    <img src={{mapa_sb}}>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href={{sb.link}} role="button">Ver Ruta</a>
+    </p>
+</div>
+
+<div class="jumbotron">
+    <h5 class="display-4">Ruta - Equipo El Bosque</h5>
+    <p class="lead">Orden de visitas: {{eb.ruta}}</hr> Distancia estimada: {{eb.distancia}}KMS </p>
+    <hr class="my-4">
+    <img src={{mapa_eb}}>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href={{eb.link}} role="button">Ver Ruta</a>
+    </p>
+</div>
+
+<div class="jumbotron">
+    <h5 class="display-4">Ruta - Equipo La Pintana</h5>
+    <p class="lead">Orden de visitas: {{lp.ruta}}</hr> Distancia estimada: {{lp.distancia}}KMS </p>
+    <hr class="my-4">
+    <img src={{mapa_lp}}>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href={{lp.link}} role="button">Ver Ruta</a>
+    </p>
+</div>
+
+
+{% elif sb and eb %}
+<div class="jumbotron">
+    <h5 class="display-4">Ruta - Equipo San Bernardo</h5>
+    <p class="lead">Orden de visitas: {{sb.ruta}}</hr> Distancia estimada: {{sb.distancia}}KMS </p>
+    <hr class="my-4">
+    <img src={{mapa_sb}}>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href={{sb.link}} role="button">Ver Ruta</a>
+    </p>
+</div>
+
+<div class="jumbotron">
+    <h5 class="display-4">Ruta - Equipo El Bosque</h5>
+    <p class="lead">Orden de visitas: {{eb.ruta}}</hr> Distancia estimada: {{eb.distancia}}KMS </p>
+    <hr class="my-4">
+    <img src={{mapa_eb}}>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href={{eb.link}} role="button">Ver Ruta</a>
+    </p>
+</div>
+{% elif sb and lp %}
+<div class="jumbotron">
+    <h5 class="display-4">Ruta - Equipo San Bernardo</h5>
+    <p class="lead">Orden de visitas: {{sb.ruta}}</hr> Distancia estimada: {{sb.distancia}}KMS </p>
+    <hr class="my-4">
+    <img src={{mapa_sb}}>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href={{sb.link}} role="button">Ver Ruta</a>
+    </p>
+</div>
+
+<div class="jumbotron">
+    <h5 class="display-4">Ruta - Equipo La Pintana</h5>
+    <p class="lead">Orden de visitas: {{lp.ruta}}</hr> Distancia estimada: {{lp.distancia}}KMS </p>
+    <hr class="my-4">
+    <img src={{mapa_lp}}>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href={{lp.link}} role="button">Ver Ruta</a>
+    </p>
+</div>
+
+{% elif eb and lp %}
+<div class="jumbotron">
+    <h5 class="display-4">Ruta - Equipo El Bosque</h5>
+    <p class="lead">Orden de visitas: {{eb.ruta}}</hr> Distancia estimada: {{eb.distancia}}KMS </p>
+    <hr class="my-4">
+    <img src={{mapa_eb}}>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href={{eb.link}} role="button">Ver Ruta</a>
+    </p>
+</div>
+
+<div class="jumbotron">
+    <h5 class="display-4">Ruta - Equipo La Pintana</h5>
+    <p class="lead">Orden de visitas: {{lp.ruta}}</hr> Distancia estimada: {{lp.distancia}}KMS </p>
+    <hr class="my-4">
+    <img src={{mapa_lp}}>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href={{lp.link}} role="button">Ver Ruta</a>
+    </p>
+</div>
+
+{% elif eb %}
+<div class="jumbotron">
+    <h5 class="display-4">Ruta - Equipo El Bosque</h5>
+    <p class="lead">Orden de visitas: {{eb.ruta}}</hr> Distancia estimada: {{eb.distancia}}KMS </p>
+    <hr class="my-4">
+    <img src={{mapa_eb}}>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href={{eb.link}} role="button">Ver Ruta</a>
+    </p>
+</div>
+
+{% elif sb %}
+<div class="jumbotron">
+    <h5 class="display-4">Ruta - Equipo San Bernardo</h5>
+    <p class="lead">Orden de visitas: {{sb.ruta}}</hr> Distancia estimada: {{sb.distancia}}KMS </p>
+    <hr class="my-4">
+    <img src={{mapa_sb}}>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href={{sb.link}} role="button">Ver Ruta</a>
+    </p>
+</div>
+
+{%elif lp%}
+<div class="jumbotron">
+    <h5 class="display-4">Ruta - Equipo La Pintana</h5>
+    <p class="lead">Orden de visitas: {{lp.ruta}}</hr> Distancia estimada: {{lp.distancia}}KMS </p>
+    <hr class="my-4">
+    <img src={{mapa_lp}}>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href={{lp.link}} role="button">Ver Ruta</a>
+    </p>
+</div>
+
+{%else%}
+
+<div class="jumbotron">
+    <h5 class="display-4">No hay rutas planificadas para hoy</h5>
+    <p class="lead">  </p>
+    <hr class="my-4">
+    <img src={{mapa_lp}}>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href={{lp.link}} role="button">Ver Ruta</a>
+    </p>
+</div>
+
+{%endif%}
+
+{% endblock content %}

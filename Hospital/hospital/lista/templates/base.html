@@ -27,8 +27,15 @@
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle "style="color: white;"  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Rutas</a>
+          <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href='{%  url "agendar_lista" %}'>Planificacion</a>
+            <a class="dropdown-item" href='{%  url "agendar_lista_hoy" %}'>Ver rutas</a>
+          </div>
+        </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'dash' %}" style="color: white;">Dashboard</a>
+          <a class="nav-link" href="{% url 'listusuarios' %}" style="color: white;">Usuarios</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle "style="color: white;"  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pacientes</a>
@@ -45,7 +52,7 @@
           <a class="nav-link dropdown-toggle "style="color: white;"  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Visitas</a>
           <div class="dropdown-menu " aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href='{%  url "agendar_lista" %}'>Visitas</a>
-            <a class="dropdown-item" href='{%  url "agendar_lista_hoy" %}'>Asginacion</a>
+            <a class="dropdown-item" href='{%  url "agendar_lista_hoy" %}'>Asignacion</a>
             <a class="dropdown-item" href="{% url 'tiempos'%}">Tiempo</a>
           </div>
         </li>

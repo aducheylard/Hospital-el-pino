@@ -6,6 +6,14 @@ class Visita(models.Model):
 	status = models.IntegerField(null=False, default=0) #0 = Activa 1= Completa 
 	equipo = models.CharField(max_length=20,null=False, default='Disponible') #0 = ninguno otro= id_equipo
 	episodio = models.IntegerField(null=False, default=0)
+	
+	nombre = models.CharField(max_length=30, default="Sin asignar")
+	apellido1=models.CharField(max_length=30, default="Sin asignar")
+	apellido2=models.CharField(max_length=30, default="Sin asignar")
+	rut = models.CharField(null=False,max_length=15, default="0")
+	comuna= models.CharField(max_length=20, default="Sin asignar")
+	domicilio=models.CharField(max_length=50, default="Sin asignar")
+	num_domicilio=models.CharField(max_length=50, default="0")
 
 class Tiempos(models.Model):
 	item = models.CharField(max_length=20,null=False)

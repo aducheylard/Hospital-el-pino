@@ -18,6 +18,14 @@ def agendar_visita(request, id=None):
     eq = Visita.objects.all()
     zxc = "Disponible"
     ep = aux.episodio
+    
+    nom = aux.nombre
+    ape1 = aux.apellido1
+    ape2 = aux.apellido2
+    rut = aux.rut
+    com = aux.comuna
+    dom = aux.domicilio
+    ndom = aux.num_domicilio
 
     for z in eq:
         if z.id_paciente == aux.id:
@@ -38,6 +46,14 @@ def agendar_visita(request, id=None):
                 visita.fecha = fecha_inicial
                 visita.equipo = zxc
                 visita.episodio = ep
+                
+                visita.nombre = nom
+                visita.apellido1 = ape1
+                visita.apellido2 = ape2
+                visita.rut = rut
+                visita.comuna = com
+                visita.domicilio = dom
+                visita.num_domicilio = ndom
                 visita.save()
                 print("entro")
         
@@ -49,6 +65,14 @@ def agendar_visita(request, id=None):
             visita.fecha = fecha_inicial
             visita.equipo = zxc
             visita.episodio = ep
+
+            visita.nombre = nom
+            visita.apellido1 = ape1
+            visita.apellido2 = ape2
+            visita.rut = rut
+            visita.comuna = com
+            visita.domicilio = dom
+            visita.num_domicilio = ndom
             visita.save()
 
         if request.POST.get('periosidad')=="2vsSA":
@@ -63,6 +87,13 @@ def agendar_visita(request, id=None):
             visita.fecha = fecha_inicial
             visita.equipo = zxc
             visita.episodio = ep
+            visita.nombre = nom
+            visita.apellido1 = ape1
+            visita.apellido2 = ape2
+            visita.rut = rut
+            visita.comuna = com
+            visita.domicilio = dom
+            visita.num_domicilio = ndom
             visita.save()
 
             visita = Visita()
@@ -70,6 +101,13 @@ def agendar_visita(request, id=None):
             visita.fecha = fecha_sig
             visita.equipo = zxc
             visita.episodio = ep
+            visita.nombre = nom
+            visita.apellido1 = ape1
+            visita.apellido2 = ape2
+            visita.rut = rut
+            visita.comuna = com
+            visita.domicilio = dom
+            visita.num_domicilio = ndom
             visita.save()
 
         if request.POST.get('periosidad') == "2vsSE":
@@ -84,6 +122,13 @@ def agendar_visita(request, id=None):
             visita.fecha = fecha_inicial
             visita.equipo = zxc
             visita.episodio = ep
+            visita.nombre = nom
+            visita.apellido1 = ape1
+            visita.apellido2 = ape2
+            visita.rut = rut
+            visita.comuna = com
+            visita.domicilio = dom
+            visita.num_domicilio = ndom
             visita.save()
 
             visita = Visita()
@@ -91,6 +136,13 @@ def agendar_visita(request, id=None):
             visita.fecha = fecha_sig
             visita.equipo = zxc
             visita.episodio = ep
+            visita.nombre = nom
+            visita.apellido1 = ape1
+            visita.apellido2 = ape2
+            visita.rut = rut
+            visita.comuna = com
+            visita.domicilio = dom
+            visita.num_domicilio = ndom
             visita.save()
         
 
@@ -107,6 +159,13 @@ def agendar_visita(request, id=None):
             visita.fecha = fecha_inicial
             visita.equipo = zxc
             visita.episodio = ep
+            visita.nombre = nom
+            visita.apellido1 = ape1
+            visita.apellido2 = ape2
+            visita.rut = rut
+            visita.comuna = com
+            visita.domicilio = dom
+            visita.num_domicilio = ndom
             visita.save()
 
             visita = Visita()
@@ -114,6 +173,13 @@ def agendar_visita(request, id=None):
             visita.fecha = fecha_2
             visita.equipo = zxc
             visita.episodio = ep
+            visita.nombre = nom
+            visita.apellido1 = ape1
+            visita.apellido2 = ape2
+            visita.rut = rut
+            visita.comuna = com
+            visita.domicilio = dom
+            visita.num_domicilio = ndom
             visita.save()
 
             visita = Visita()
@@ -121,6 +187,13 @@ def agendar_visita(request, id=None):
             visita.fecha = fecha_3
             visita.equipo = zxc
             visita.episodio = ep
+            visita.nombre = nom
+            visita.apellido1 = ape1
+            visita.apellido2 = ape2
+            visita.rut = rut
+            visita.comuna = com
+            visita.domicilio = dom
+            visita.num_domicilio = ndom
             visita.save()
 
         
@@ -137,6 +210,13 @@ def agendar_visita(request, id=None):
             visita.fecha = fecha_inicial
             visita.equipo = zxc
             visita.episodio = ep
+            visita.nombre = nom
+            visita.apellido1 = ape1
+            visita.apellido2 = ape2
+            visita.rut = rut
+            visita.comuna = com
+            visita.domicilio = dom
+            visita.num_domicilio = ndom
             visita.save()
 
             visita=Visita()
@@ -144,6 +224,13 @@ def agendar_visita(request, id=None):
             visita.fecha = fecha_2
             visita.equipo = zxc
             visita.episodio = ep
+            visita.nombre = nom
+            visita.apellido1 = ape1
+            visita.apellido2 = ape2
+            visita.rut = rut
+            visita.comuna = com
+            visita.domicilio = dom
+            visita.num_domicilio = ndom
             visita.save()
 
             visita=Visita()
@@ -151,6 +238,13 @@ def agendar_visita(request, id=None):
             visita.fecha = fecha_3
             visita.equipo = zxc
             visita.episodio = ep
+            visita.nombre = nom
+            visita.apellido1 = ape1
+            visita.apellido2 = ape2
+            visita.rut = rut
+            visita.comuna = com
+            visita.domicilio = dom
+            visita.num_domicilio = ndom
             visita.save()
                 
         return redirect(visita_paciente_admin,id)
@@ -183,11 +277,12 @@ def agendar_lista(request):
 @login_required    
 def visita_paciente(request):
     queryset = Visita.objects.all()
-    current_user = request.user
+    instance = get_object_or_404(Tutor, id_perfil_id = current_user.id)
     tx =  get_object_or_404(Tutor, id_perfil_id = current_user.id)
     pax = instance = get_object_or_404(Paciente, id_tutor_id = tx.id)
+    current_user = request.user
     px = Paciente.objects.all()
-    instance = get_object_or_404(Tutor, id_perfil_id = current_user.id)
+   
     context = {
         "date_list": queryset,
         "px": px,

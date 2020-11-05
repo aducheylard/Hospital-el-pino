@@ -1,3 +1,9 @@
+import json
+import requests
+import time
+import math
+import numpy as np
+from datetime import date
 from django.shortcuts import render, get_object_or_404
 from usuarios.models import Paciente, Personal, Perfil
 from tutor.models import Consulta
@@ -7,6 +13,7 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.models import User
 from datetime import datetime, date
 from django.contrib.auth.decorators import login_required
+
 
 
 @login_required
@@ -55,6 +62,7 @@ def home(request):
 	for i in consulta:
 		if i.estado == 0:
 			cont = cont + 1
+
 
 	group = Group.objects.all() 
 	context = {
