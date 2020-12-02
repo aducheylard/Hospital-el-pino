@@ -2,14 +2,24 @@
 
 {%  block content %}
 
+<style>
+    .aligncenter {
+        text-align: center;
+    }
+</style>    
+
 {% if sb and eb and lp %}
 <div class="jumbotron">
     <h5 class="display-4">Ruta - Equipo San Bernardo</h5>
     <p class="lead">Orden de visitas: {{sb.ruta}}</hr> Distancia estimada: {{sb.distancia}}KMS </p>
     <hr class="my-4">
+    <p class="aligncenter">
     <img src={{mapa_sb}}>
+    </p>
     <p class="lead">
-        <a class="btn btn-primary btn-lg" href={{sb.link}} role="button">Ver Ruta</a>
+        <p class="aligncenter">
+        <a class="btn btn-primary btn-lg" href={{sb.link}} target="_blank" role="button">Ver Ruta</a>
+        </p>
     </p>
 </div>
 
@@ -17,9 +27,14 @@
     <h5 class="display-4">Ruta - Equipo El Bosque</h5>
     <p class="lead">Orden de visitas: {{eb.ruta}}</hr> Distancia estimada: {{eb.distancia}}KMS </p>
     <hr class="my-4">
+    <p class="aligncenter">
     <img src={{mapa_eb}}>
+    </p>
     <p class="lead">
-        <a class="btn btn-primary btn-lg" href={{eb.link}} role="button">Ver Ruta</a>
+        
+        <p class="aligncenter">
+        <a class="btn btn-primary btn-lg" href={{eb.link}} target="_blank" role="button">Ver Ruta</a>
+        </p>
     </p>
 </div>
 
@@ -27,9 +42,13 @@
     <h5 class="display-4">Ruta - Equipo La Pintana</h5>
     <p class="lead">Orden de visitas: {{lp.ruta}}</hr> Distancia estimada: {{lp.distancia}}KMS </p>
     <hr class="my-4">
+    <p class="aligncenter">
     <img src={{mapa_lp}}>
+    </p>
     <p class="lead">
-        <a class="btn btn-primary btn-lg" href={{lp.link}} role="button">Ver Ruta</a>
+        <p class="aligncenter">
+        <a class="btn btn-primary btn-lg" href={{lp.link}} target="_blank" role="button">Ver Ruta</a>
+        </p>
     </p>
 </div>
 
@@ -39,9 +58,13 @@
     <h5 class="display-4">Ruta - Equipo San Bernardo</h5>
     <p class="lead">Orden de visitas: {{sb.ruta}}</hr> Distancia estimada: {{sb.distancia}}KMS </p>
     <hr class="my-4">
+    <p class="aligncenter">
     <img src={{mapa_sb}}>
+    </p>
     <p class="lead">
-        <a class="btn btn-primary btn-lg" href={{sb.link}} role="button">Ver Ruta</a>
+        <p class="aligncenter">
+        <a class="btn btn-primary btn-lg" href={{sb.link}} target="_blank" role="button">Ver Ruta</a>
+        </p>
     </p>
 </div>
 
@@ -49,9 +72,13 @@
     <h5 class="display-4">Ruta - Equipo El Bosque</h5>
     <p class="lead">Orden de visitas: {{eb.ruta}}</hr> Distancia estimada: {{eb.distancia}}KMS </p>
     <hr class="my-4">
+    <p class="aligncenter">
     <img src={{mapa_eb}}>
+    </p>
     <p class="lead">
-        <a class="btn btn-primary btn-lg" href={{eb.link}} role="button">Ver Ruta</a>
+        <p class="aligncenter">
+        <a class="btn btn-primary btn-lg" href={{eb.link}} target="_blank" role="button">Ver Ruta</a>
+        </p>
     </p>
 </div>
 {% elif sb and lp %}
@@ -59,9 +86,13 @@
     <h5 class="display-4">Ruta - Equipo San Bernardo</h5>
     <p class="lead">Orden de visitas: {{sb.ruta}}</hr> Distancia estimada: {{sb.distancia}}KMS </p>
     <hr class="my-4">
+    <p class="aligncenter">
     <img src={{mapa_sb}}>
+    </p>
     <p class="lead">
-        <a class="btn btn-primary btn-lg" href={{sb.link}} role="button">Ver Ruta</a>
+        <p class="aligncenter">
+        <a class="btn btn-primary btn-lg" href={{sb.link}} target="_blank" role="button">Ver Ruta</a>
+        </p>
     </p>
 </div>
 
@@ -69,9 +100,13 @@
     <h5 class="display-4">Ruta - Equipo La Pintana</h5>
     <p class="lead">Orden de visitas: {{lp.ruta}}</hr> Distancia estimada: {{lp.distancia}}KMS </p>
     <hr class="my-4">
+    <p class="aligncenter">
     <img src={{mapa_lp}}>
+    </p>
     <p class="lead">
-        <a class="btn btn-primary btn-lg" href={{lp.link}} role="button">Ver Ruta</a>
+        <p class="aligncenter">
+        <a class="btn btn-primary btn-lg" href={{lp.link}} target="_blank" role="button">Ver Ruta</a>
+        </p>
     </p>
 </div>
 
@@ -80,9 +115,13 @@
     <h5 class="display-4">Ruta - Equipo El Bosque</h5>
     <p class="lead">Orden de visitas: {{eb.ruta}}</hr> Distancia estimada: {{eb.distancia}}KMS </p>
     <hr class="my-4">
+    <p class="aligncenter">
     <img src={{mapa_eb}}>
+    </p>
     <p class="lead">
-        <a class="btn btn-primary btn-lg" href={{eb.link}} role="button">Ver Ruta</a>
+        <p class="aligncenter">
+        <a class="btn btn-primary btn-lg" href={{eb.link}} target="_blank" role="button">Ver Ruta</a>
+        </p>
     </p>
 </div>
 
@@ -90,9 +129,13 @@
     <h5 class="display-4">Ruta - Equipo La Pintana</h5>
     <p class="lead">Orden de visitas: {{lp.ruta}}</hr> Distancia estimada: {{lp.distancia}}KMS </p>
     <hr class="my-4">
-    <img src={{mapa_lp}}>
+    <p class = "aligncenter">
+        <img src={{mapa_lp}}>
+    </p>
     <p class="lead">
-        <a class="btn btn-primary btn-lg" href={{lp.link}} role="button">Ver Ruta</a>
+        <p class="aligncenter">
+        <a class="btn btn-primary btn-lg" href={{lp.link}} target="_blank" role="button">Ver Ruta</a>
+        </p>
     </p>
 </div>
 
@@ -101,9 +144,13 @@
     <h5 class="display-4">Ruta - Equipo El Bosque</h5>
     <p class="lead">Orden de visitas: {{eb.ruta}}</hr> Distancia estimada: {{eb.distancia}}KMS </p>
     <hr class="my-4">
-    <img src={{mapa_eb}}>
+    <p class="aligncenter">
+        <img src={{mapa_eb}}>
+    </p>
     <p class="lead">
-        <a class="btn btn-primary btn-lg" href={{eb.link}} role="button">Ver Ruta</a>
+        <p class="aligncenter">
+        <a class="btn btn-primary btn-lg" href={{eb.link}} target="_blank" role="button">Ver Ruta</a>
+        </p>
     </p>
 </div>
 
@@ -112,9 +159,13 @@
     <h5 class="display-4">Ruta - Equipo San Bernardo</h5>
     <p class="lead">Orden de visitas: {{sb.ruta}}</hr> Distancia estimada: {{sb.distancia}}KMS </p>
     <hr class="my-4">
-    <img src={{mapa_sb}}>
+    <p class = "aligncenter">
+        <img src={{mapa_sb}}>
+    </p>
     <p class="lead">
-        <a class="btn btn-primary btn-lg" href={{sb.link}} role="button">Ver Ruta</a>
+        <p class="aligncenter">
+        <a class="btn btn-primary btn-lg" href={{sb.link}} target="_blank" role="button">Ver Ruta</a>
+        </p>
     </p>
 </div>
 
@@ -123,21 +174,81 @@
     <h5 class="display-4">Ruta - Equipo La Pintana</h5>
     <p class="lead">Orden de visitas: {{lp.ruta}}</hr> Distancia estimada: {{lp.distancia}}KMS </p>
     <hr class="my-4">
-    <img src={{mapa_lp}}>
+    <p class="aligncenter">
+        <img src={{mapa_lp}}>
+    </p>
     <p class="lead">
-        <a class="btn btn-primary btn-lg" href={{lp.link}} role="button">Ver Ruta</a>
+        <p class="aligncenter">
+        <a class="btn btn-primary btn-lg" href={{lp.link}} target="_blank" role="button">Ver Ruta</a>
+        </p>
     </p>
 </div>
 
-{%else%}
+{% elif rutas %}
 
 <div class="jumbotron">
-    <h5 class="display-4">No hay rutas planificadas para hoy</h5>
+    <p class="aligncenter">
+        <h7 class="display-4">Actualmente ya hay rutas planificadas</h7>
+    </p>
+    <p class="lead">  </p>
+    <hr aling="middle" class="my-4">
+    <p class="aligncenter">
+        <img src={{mapa}}>
+    </p>
+    <p class="aligncenter">
+        <a class="btn btn-primary btn-sm" href='{% url "optimizar_rutas" %}' role="button">Replanificar rutas</a>
+    </p>
+    <p class="lead">
+    </p>
+</div>
+
+
+{%elif visitas and equipo%}
+
+<div class="jumbotron">
+    <p class="aligncenter">
+        <h7 class="display-4">Actualmente no hay rutas planificadas</h7>
+    </p>
+    <p class="lead">  </p>
+    <hr aling="middle" class="my-4">
+    <p class="aligncenter">
+        <img src={{mapa}}>
+        
+    </p>
+    <p class="aligncenter">
+        <a class="btn btn-primary btn-sm" href='{% url "optimizar_rutas" %}' role="button">Planificar rutas</a>
+    </p>
+    <p class="lead">
+    </p>
+</div>
+
+{% elif visitas %}
+
+<div class="jumbotron">
+    <p class="aligncenter">
+        <h7 class="display-4">Actualmente no hay rutas planificadas</h7>
+    </p>
+    <p class="lead">  </p>
+    <hr aling="middle" class="my-4">
+    <p class="aligncenter">
+        <img src={{mapa}}>
+        
+    </p>
+    <p class="aligncenter">
+        <div class="alert alert-danger" role="alert">
+            Las visitas no tienen un equipo medico asignado, dirigase a <a href='{%  url "agendar_lista_hoy" %}' class="alert-link">Asignación</a>. Para continuar.
+        </div>
+    </p>
+    <p class="lead">
+    </p>
+</div>
+
+{% else %}
+<div class="jumbotron">
+    <h5 class="display-4">No hay visitas para hoy</h5>
     <p class="lead">  </p>
     <hr class="my-4">
-    <img src={{mapa_lp}}>
     <p class="lead">
-        <a class="btn btn-primary btn-lg" href={{lp.link}} role="button">Ver Ruta</a>
     </p>
 </div>
 

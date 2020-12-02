@@ -7,9 +7,66 @@ import numpy as np
 from datetime import date
 from django.shortcuts import render
 from .models import Ruta
+from usuarios.models import Paciente
 from visita.models import Visita
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+import re
+
+
+@login_required
+def vista_optimizacion(request):
+    visitas = Visita.objects.all()
+    rutas = Ruta.objects.all()
+    visitas_hoy = []
+    rutas_hoy = []
+    visitas_asignadas = []
+    direc_mapa = []
+    direcciones = []
+    concatenar = ""
+    x = 0
+    for visita in visitas:
+        if visita.fecha == date.today():
+            print(x)
+            visitas_hoy.append(visita)
+            direcciones.append(((str(visitas_hoy[x].domicilio)).replace(" ", "+")+"+"+(str(visitas_hoy[x].num_domicilio)).replace(" ", "+")+","+(str(visitas_hoy[x].comuna)).replace(" ", "+")+",chile" ))
+            direc_mapa.append((str(direcciones[x]) + "|marker-sm-" + str(x) + "||"))
+            print(x)
+            print(len(direcciones))
+            if visita.equipo != 'Disponible':
+                visitas_asignadas.append(visita)
+            x +=1
+    for ruta in rutas:
+        if ruta.fecha == date.today():
+            rutas_hoy.append(ruta)
+
+    if rutas_hoy:
+        mapa = "https://www.mapquestapi.com/staticmap/v5/map?locations="+str(concatenar.join(direc_mapa)) +"&size=300,300@2x&key=K4YQLdWn9G3LkCzYAt0LDixd9T1J0MLL"
+        context = {
+            "rutas": 1,
+            "mapa":mapa
+        }
+    elif visitas_asignadas:
+        mapa = "https://www.mapquestapi.com/staticmap/v5/map?locations="+str(concatenar.join(direc_mapa)) +"&size=300,300@2x&key=K4YQLdWn9G3LkCzYAt0LDixd9T1J0MLL"
+        context = {
+            "visitas":1,
+            "equipo":1,
+            "mapa":mapa
+        }
+    elif visitas_hoy:
+        mapa = "https://www.mapquestapi.com/staticmap/v5/map?locations="+str(concatenar.join(direc_mapa)) +"&size=300,300@2x&key=K4YQLdWn9G3LkCzYAt0LDixd9T1J0MLL"
+        context = {
+            "visitas":1,
+            "mapa":mapa
+        }
+    else:
+         context = {
+        "no_visitas":1
+    }    
+    return render(request, "test.html", context)
+
+
+
 
 @login_required
 def optimizar_rutas(request):
@@ -33,6 +90,7 @@ def optimizar_rutas(request):
     visitas_sb = [] #Visitas asinadas para el equipo de San Bernardo.
     visitas_eb = [] #Visitas asinadas para el equipo de El Bosque.
     visitas_lp = [] #Visitas asignadas para el equipo de La Pintana.
+    visitas_hoy= [] #Visitas programadas para el día de hoy.
 
     pacientes_sb = []
     pacientes_eb = []
@@ -43,6 +101,7 @@ def optimizar_rutas(request):
     ruta_lp = 0
 
     contador = 0
+    
     for visita in visitas:
         if visita.fecha == date.today():
             if visita.equipo == "SanBernardo":
@@ -63,6 +122,7 @@ def optimizar_rutas(request):
                 #req_api1_lp_dict.append(req_api1_lp[contador].json())
                 visitas_lp.append(visita)
                 pacientes_lp.append(visita.id_paciente)
+            visitas_hoy.append(visita)
                 
     if visitas_sb:
         data_api2_sb = {
@@ -117,13 +177,13 @@ def optimizar_rutas(request):
         for x in range(len(ruta)):
             direcciones_ordenadas.append(ubicaciones_sb[ruta[x]])
             if x == 0:
-                direc_mapa.append(str(direcciones_ordenadas[x]) + "|marker-lg-D51A1A-A20000||")
+                direc_mapa.append(str(direcciones_ordenadas[x]) + "|marker-sm-D51A1A-A20000||")
             if x>0:
                 if x == len(ruta)-1:
-                    print(" ENTREEEEEEEEEEEEEEEEEEEE ")
-                    direc_mapa.append(str(direcciones_ordenadas[x]) + "|marker-lg-D51A1A-A20000||")
+                    
+                    direc_mapa.append(str(direcciones_ordenadas[x]) + "|marker-sm-D51A1A-A20000||")
                     break
-                direc_mapa.append(str(direcciones_ordenadas[x]) + "|marker-lg-" + str(x) + "||")
+                direc_mapa.append(str(direcciones_ordenadas[x]) + "|marker-sm-" + str(x) + "||")
                 if x<len(ruta)-1:
                     pacientes_ordenados.append(pacientes_sb[ruta[x]-1])
     
@@ -134,7 +194,7 @@ def optimizar_rutas(request):
 
 
         link = "https://www.google.com/maps/dir/" + lista.join(direcciones_ordenadas)
-        mapa_sb = "https://www.mapquestapi.com/staticmap/v5/map?locations="+str(concatenar.join(direc_mapa)) +"&size=@2x&key=K4YQLdWn9G3LkCzYAt0LDixd9T1J0MLL"
+        mapa_sb = "https://www.mapquestapi.com/staticmap/v5/map?locations="+str(concatenar.join(direc_mapa)) +"&size=300,300@2x&key=K4YQLdWn9G3LkCzYAt0LDixd9T1J0MLL"
         ruta_sb = Ruta.objects.crear_ruta("SanBernardo", date.today(), ruta_json, direcciones_ordenadas, link, pacientes_ordenados, distancia_f)
         print(mapa_sb)
     if visitas_eb:
@@ -190,13 +250,12 @@ def optimizar_rutas(request):
         for x in range(len(ruta)):
             direcciones_ordenadas.append(ubicaciones_eb[ruta[x]])
             if x == 0:
-                direc_mapa.append(str(direcciones_ordenadas[x]) + "|marker-lg-D51A1A-A20000||")
+                direc_mapa.append(str(direcciones_ordenadas[x]) + "|marker-sm-D51A1A-A20000||")
             if x>0:
                 if x == len(ruta)-1:
-                    print(" ENTREEEEEEEEEEEEEEEEEEEE ")
-                    direc_mapa.append(str(direcciones_ordenadas[x]) + "|marker-lg-D51A1A-A20000||")
+                    direc_mapa.append(str(direcciones_ordenadas[x]) + "|marker-sm-D51A1A-A20000||")
                     break
-                direc_mapa.append(str(direcciones_ordenadas[x]) + "|marker-lg-" + str(x) + "||")
+                direc_mapa.append(str(direcciones_ordenadas[x]) + "|marker-sm-" + str(x) + "||")
                 if x<len(ruta)-1:
                     pacientes_ordenados.append(pacientes_eb[ruta[x]-1])
 
@@ -206,7 +265,7 @@ def optimizar_rutas(request):
 
 
         link = "https://www.google.com/maps/dir/" + lista.join(direcciones_ordenadas)
-        mapa_eb = "https://www.mapquestapi.com/staticmap/v5/map?locations="+str(concatenar.join(direc_mapa)) +"&size=@2x&key=K4YQLdWn9G3LkCzYAt0LDixd9T1J0MLL"
+        mapa_eb = "https://www.mapquestapi.com/staticmap/v5/map?locations="+str(concatenar.join(direc_mapa)) +"&size=300,300@2x&key=K4YQLdWn9G3LkCzYAt0LDixd9T1J0MLL"
         ruta_eb = Ruta.objects.crear_ruta("ElBosque", date.today(), ruta_json, direcciones_ordenadas, link, pacientes_ordenados, distancia_f)
 
     if visitas_lp:
@@ -263,13 +322,12 @@ def optimizar_rutas(request):
         for x in range(len(ruta)):
             direcciones_ordenadas.append(ubicaciones_lp[ruta[x]])
             if x == 0:
-                direc_mapa.append(str(direcciones_ordenadas[x]) + "|marker-lg-D51A1A-A20000||")
+                direc_mapa.append(str(direcciones_ordenadas[x]) + "|marker-sm-D51A1A-A20000||")
             if x>0:
                 if x == len(ruta)-1:
-                    print(" ENTREEEEEEEEEEEEEEEEEEEE ")
-                    direc_mapa.append(str(direcciones_ordenadas[x]) + "|marker-lg-D51A1A-A20000||")
+                    direc_mapa.append(str(direcciones_ordenadas[x]) + "|marker-sm-D51A1A-A20000||")
                     break
-                direc_mapa.append(str(direcciones_ordenadas[x]) + "|marker-lg-" + str(x) + "||")
+                direc_mapa.append(str(direcciones_ordenadas[x]) + "|marker-sm-" + str(x) + "||")
                 if x<len(ruta)-1:
                     pacientes_ordenados.append(pacientes_lp[ruta[x]-1])
 
@@ -279,7 +337,7 @@ def optimizar_rutas(request):
 
 
         link = "https://www.google.com/maps/dir/" + lista.join(direcciones_ordenadas)
-        mapa_lp = "https://www.mapquestapi.com/staticmap/v5/map?locations="+str(concatenar.join(direc_mapa)) +"&size=@2x&key=K4YQLdWn9G3LkCzYAt0LDixd9T1J0MLL"
+        mapa_lp = "https://www.mapquestapi.com/staticmap/v5/map?locations="+str(concatenar.join(direc_mapa)) +"&size=300,300@2x&key=K4YQLdWn9G3LkCzYAt0LDixd9T1J0MLL"
         ruta_lp = Ruta.objects.crear_ruta("LaPintana", date.today(), ruta_json, direcciones_ordenadas, link, pacientes_ordenados, distancia_f)
         
     
@@ -328,6 +386,40 @@ def optimizar_rutas(request):
             "lp":ruta_lp,
             "mapa_lp":mapa_lp
         }
-
+    elif visitas_hoy:
+        context = {
+            "no_ruta": 1,
+            "visitas_hoy": 1
+        }
+    else:
+        context = {
+            "no_equipo":1
+        }
     return render(request, "test.html", context)
+
+
+
+
+@login_required
+def ver_rutas(request):
+    rutas = Ruta.objects.all()
+    pacientes = Paciente.objects.all()
+    n_pacientes = []
+
+    for ruta in rutas:
+        temp=[]
+        for a in re.split(r'\W+', str(ruta.pacientes)):
+            if a.isdigit():
+                temp.append(Paciente.objects.get(id=int(a)))
+        for x in range(len(temp)):
+            tempo = str(temp[x].nombre)+ " " +str(temp[x].apellido1) + " " + str(temp[x].apellido2)
+            a = a + "-->" + tempo
+        n_pacientes.append(a)
+    context = {
+        "rutas":rutas,
+        "pacientes":n_pacientes
+    }
+    return render(request, "lista_rutas.html", context)
+
+    
 

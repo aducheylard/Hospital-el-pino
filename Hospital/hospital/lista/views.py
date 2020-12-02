@@ -7,6 +7,7 @@ from .forms import Paciente_Form_activo
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
+from biblioteca.models import Archivo
 
 @login_required
 def logout_view(request):
@@ -161,3 +162,4 @@ def observaciones(request,id=None):
 		"nota":n,
 	}
 	return  render(request,"observaciones.html",context)
+

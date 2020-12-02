@@ -143,30 +143,18 @@ input[type=checkbox]
                                         <span class="badge badge-success">Realizada</span>
                                     {%endif%}                                        
                                 </td> 
-
-                                <td>
-                                    
+                                <td> 
                                     {% if fecha.equipo == 0%}
-
                                         <a> Sin equipo asignado </a>
-
                                     {% else %}
-
-
                                             {% for g in group %}
 
                                                 {% if g.name == fecha.equipo %}
                                                     <a>{{g.name}}</a>
                                                 {%endif%}
-
                                             {%endfor%}  
-
                                     {%endif%}
-
-                                </td>
-
-
-                                
+                                </td>      
                             </tr>
                     
                             {%endif%}
@@ -190,7 +178,7 @@ input[type=checkbox]
                      <label for=equipo><h2>Asignar Equipo:</h2></label>
                       <select id="equipo" name="equipo" class="form-control">
                         {%for g in group %}
-                          {%if g.name != 'Disponible' and g.name != 'Tutores' and g.name != 'Personal' and  g.name != 'Administrador' %}
+                          {%if g.name != 'Tutores' and g.name != 'Personal' and  g.name != 'Administrador' %}
                             <option value="{{g.name}}">{{g.name}}</option>
                           {% endif %}
                         {% endfor %}

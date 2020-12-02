@@ -77,6 +77,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'lista.context_processors.add_variable_to_context',
             ],
         },
     },
@@ -91,10 +92,10 @@ WSGI_APPLICATION = 'hospital.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'Hospital-DB',
-        'USER': 'postgres',
-        'PASSWORD': '12344321',
-        'HOST': 'hospital-db.crxchedgxtom.us-east-2.rds.amazonaws.com',
+        'NAME': 'postgres',
+        'USER': 'andre@hospital-pino',
+        'PASSWORD': 'andhos12345*',
+        'HOST': 'hospital-pino.postgres.database.azure.com',
         'PORT': '5432',
     }
 }
