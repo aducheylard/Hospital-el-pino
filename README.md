@@ -6,4 +6,5 @@ Sistema de administracion para visitas domiciliarias del hospital el pino de San
   -La base de datos esta corriendo 24/7 en el servicio de Azure, mientras que la API y la app Web estan corriendo en una máquina virtual en AWS.
   -También se agregó el APK para probar la app en un teléfono con Android.
 
-En la carpeta de documentacion se encuentra el informe y el manual de usuario de la app móvil y web.
+-En la carpeta de documentacion se encuentra el informe y el manual de usuario de la app móvil y web.
+  -Además en la misma carpeta se encuentra el ejecutable para correr la aplicación en un teléfono con sistema operativo Android.
