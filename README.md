@@ -8,3 +8,5 @@ Sistema de administracion para visitas domiciliarias del hospital el pino de San
 
 -En la carpeta de documentacion se encuentra el informe y el manual de usuario de la app móvil y web.
   -Además en la misma carpeta se encuentra el ejecutable para correr la aplicación en un teléfono con sistema operativo Android.
+  
+  URL Página Web: http://ec2-18-220-31-255.us-east-2.compute.amazonaws.com:8000/
